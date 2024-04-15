@@ -140,7 +140,7 @@ namespace Dictionary
             {
                 for (int j = buckets[i]; j != -1; j = elements[j].Next)
                 {
-                    yield return new KeyValuePair<TKey, TValue>(elements[j].Key!, elements[j].Value);
+                    yield return new KeyValuePair<TKey, TValue>(elements[j].Key!, elements[j].Value!);
                 }
             }
         }
@@ -212,7 +212,7 @@ namespace Dictionary
             {
                 for (int j = buckets[i]; j != -1; j = elements[j].Next)
                 {
-                    array[arrayIndex] = new KeyValuePair<TKey, TValue>(elements[j].Key!, elements[j].Value);
+                    array[arrayIndex] = new KeyValuePair<TKey, TValue>(elements[j].Key!, elements[j].Value!);
                     arrayIndex++;
                 }
             }

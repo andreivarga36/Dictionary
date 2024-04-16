@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Dictionary
+namespace Dictionary.Classes
 {
     public class MyDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
@@ -111,8 +111,8 @@ namespace Dictionary
             bool valuesAreNull = item.Value is null && this[item.Key] is null;
             int index = GetElementIndex(item.Key, out int _);
 
-            return (index != -1 && valuesAreNull)
-                || (index != -1 && this[item.Key].Equals(item.Value));
+            return index != -1 && valuesAreNull
+                || index != -1 && this[item.Key].Equals(item.Value);
         }
 
         public bool ContainsKey(TKey key) => GetElementIndex(key, out int _) != -1;
@@ -176,8 +176,8 @@ namespace Dictionary
         {
             bool valuesAreNull = item.Value is null && this[item.Key] is null;
 
-            return (valuesAreNull && Remove(item.Key))
-                || (this[item.Key].Equals(item.Value) && Remove(item.Key));
+            return valuesAreNull && Remove(item.Key)
+                || this[item.Key].Equals(item.Value) && Remove(item.Key);
         }
 
         public bool TryGetValue(TKey key, out TValue value)
@@ -274,7 +274,7 @@ namespace Dictionary
 
         private void ValidateArrayAvailableSpace(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
-            if (Count <= (array.Length - arrayIndex))
+            if (Count <= array.Length - arrayIndex)
             {
                 return;
             }

@@ -1,6 +1,7 @@
+using Dictionary.Classes;
 using Xunit;
 
-namespace Dictionary
+namespace DictionaryFacts.Classes
 {
     public class MyDictionaryFacts
     {
@@ -110,8 +111,8 @@ namespace Dictionary
                 { 3, null }
             };
 
-            Assert.True(dictionary.Contains(new KeyValuePair<int, string>(1, "a")));
-            Assert.True(dictionary.Contains(new KeyValuePair<int, string>(3, null)));
+            Assert.Contains(new KeyValuePair<int, string>(1, "a"), dictionary);
+            Assert.Contains(new KeyValuePair<int, string>(3, null), dictionary);
         }
 
         [Fact]
@@ -122,7 +123,7 @@ namespace Dictionary
                 { 11, "eleven" }
             };
 
-            Assert.False(myDictionary.Contains(new KeyValuePair<int, string>(10, "")));
+            Assert.DoesNotContain(new KeyValuePair<int, string>(10, ""), myDictionary);
         }
 
         [Fact]
@@ -138,8 +139,8 @@ namespace Dictionary
             dictionary.Add(john);
             dictionary.Add(mark);
 
-            Assert.True(dictionary.Contains(paul)); 
-            Assert.False(dictionary.Contains(christian));
+            Assert.Contains(paul, dictionary);
+            Assert.DoesNotContain(christian, dictionary);
         }
 
         [Fact]

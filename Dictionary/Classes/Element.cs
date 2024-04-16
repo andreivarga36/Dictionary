@@ -1,4 +1,4 @@
-﻿namespace Dictionary
+﻿namespace Dictionary.Classes
 {
     public class Element<TKey, TValue>
     {
@@ -9,7 +9,7 @@
             Next = -1;
         }
 
-        public TKey Key { get;  internal set; }
+        public TKey Key { get; internal set; }
 
         public TValue? Value { get; internal set; }
 
